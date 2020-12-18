@@ -14,15 +14,26 @@ section {
   min-height: 100vh;
   background: #1c1c25;
 }
-section:before {
+section::before,
+section::after {
   content: "";
   position: absolute;
+  border-radius: 50%;
+  z-index: 1;
+}
+section::before {
   bottom: -40%;
-  left: 40%;
+  left: 50%;
   width: 600px;
   height: 600px;
   background-image: linear-gradient(#f00, #f0f);
-  border-radius: 50%;
+}
+section::after {
+  top: -10%;
+  left: 10%;
+  width: 400px;
+  height: 400px;
+  background-image: linear-gradient(#e91e63, #2196f3);
 }
 .card {
   position: relative;
@@ -30,6 +41,7 @@ section:before {
   height: 314px;
   transform-style: preserve-3d;
   perspective: 500px;
+  z-index: 2;
 }
 .card .face {
   position: absolute;
@@ -44,7 +56,9 @@ section:before {
     rgba(255, 255, 255, 0.2),
     rgba(255, 255, 255, 0.05)
   );
-  backdrop-filter: blur(30px);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
   transform-style: preserve-3d;
   backface-visibility: hidden;
   transition: 1s;
